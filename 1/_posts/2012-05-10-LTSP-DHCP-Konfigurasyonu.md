@@ -5,4 +5,6 @@ title: LTSP-DHCP Konfigurasyonu
 
 #TODO
 
-* Meraba merve :D
+* yapilacak
+
+-> olacak.
