@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ltsp-dhcp konfigurasyonu
+title: LTSP-DHCP Konfigurasyonu
 ---
 
 #TODO
