@@ -5,6 +5,4 @@ title: LTSP-DHCP Konfigurasyonu
 
 #TODO
 
-* yapilacak
-
--> olacak.
+* test
