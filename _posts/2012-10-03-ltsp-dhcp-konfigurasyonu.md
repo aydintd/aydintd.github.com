@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Ltsp Dhcp Konfigurasyonu"
-description: ""
-category: 
+title: "LTSP-DHCP Konfigurasyonu"
+description: "Lab19 Konfigurasyon Dökünamanı"
+category: 19/x
 tags: []
 ---
 {% include JB/setup %}
