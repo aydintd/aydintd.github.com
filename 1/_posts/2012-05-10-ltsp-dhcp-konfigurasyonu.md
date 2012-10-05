@@ -18,59 +18,59 @@ title: LTSP-DHCP Konfigurasyonu
 
 - `/etc/ltsp/ltsp-build-client.conf` dosyasını düzenle
 
-  
-  `# The chroot architecture.
-   ARCH=i386
 
-   # ubuntu-desktop and edubuntu-desktop are tested.
-   # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
-   # kubuntu lucid (10.10) working okay.
-   FAT_CLIENT_DESKTOPS="ubuntu-desktop"
+    `# The chroot architecture.
+     ARCH=i386
 
-   # Space separated list of programs to install.
-   # The java plugin installation contained in ubuntu-restricted-extras
-   # needs some special care, so let's use it as an example.
-   LATE_PACKAGES="
-       ubuntu-restricted-extras
-       gimp
-       nfs-client"
+     # ubuntu-desktop and edubuntu-desktop are tested.
+     # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
+     # kubuntu lucid (10.10) working okay.
+     FAT_CLIENT_DESKTOPS="ubuntu-desktop"
 
-   # This is needed to answer "yes" to the Java EULA.
-   # We'll create that file in the next step.
-   DEBCONF_SEEDS="/etc/ltsp/debconf.seeds"
+     # Space separated list of programs to install.
+     # The java plugin installation contained in ubuntu-restricted-extras
+     # needs some special care, so let's use it as an example.
+     LATE_PACKAGES="
+         ubuntu-restricted-extras
+         gimp
+         nfs-client"
 
-   # This uses the server apt cache to speed up downloading.
-   # This locks the servers dpkg, so you can't use apt on
-   # the server while building the chroot.
-   MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"`
+     # This is needed to answer "yes" to the Java EULA.
+     # We'll create that file in the next step.
+     DEBCONF_SEEDS="/etc/ltsp/debconf.seeds"
+
+     # This uses the server apt cache to speed up downloading.
+     # This locks the servers dpkg, so you can't use apt on
+     # the server while building the chroot.
+     MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"`
 
 ## DHCP Yapılandırılması
 
 - `/etc/ltsp/dhcpd.conf` dosyasını düzenle
 
   
-  `authoritative;
-  allow bootp;
+    authoritative;
+    allow bootp;
 
-  subnet 10.0.2.0 netmask 255.255.255.0 {
-      range 10.0.2.20 10.0.2.250;
+    subnet 10.0.2.0 netmask 255.255.255.0 {
+        range 10.0.2.20 10.0.2.250;
 
-      option domain-name "example.com";
-      option domain-name-servers 192.168.111.5;
-      option broadcast-address 10.0.2.255;
-      option routers 10.0.2.2;
-  #    next-server 192.168.0.1;
+        option domain-name "example.com";
+        option domain-name-servers 192.168.111.5;
+        option broadcast-address 10.0.2.255;
+        option routers 10.0.2.2;
+    #    next-server 192.168.0.1;
 
-  #    get-lease-hostnames true;
-      option subnet-mask 255.255.255.0;
-      option root-path "/opt/ltsp/i386";
-      if substring( option vendor-class-identifier, 0, 9 ) = "PXEClient" {
-          filename "/ltsp/i386/pxelinux.0";
+    #    get-lease-hostnames true;
+        option subnet-mask 255.255.255.0;
+        option root-path "/opt/ltsp/i386";
+        if substring( option vendor-class-identifier, 0, 9 ) = "PXEClient" {
+            filename "/ltsp/i386/pxelinux.0";
 
-      } else {
-          filename "/ltsp/i386/nbi.img";
-      }
-  }`
+        } else {
+            filename "/ltsp/i386/nbi.img";
+        }
+    }
   
 
   `option domain-name-servers` karşısına yazılan adres, internetinizin o anki
@@ -89,6 +89,7 @@ title: LTSP-DHCP Konfigurasyonu
 
   ```
   $ service networking restart
+
   $ service dhcp3-server restart
   ```
 
@@ -118,6 +119,7 @@ title: LTSP-DHCP Konfigurasyonu
   ```
   $ ltsp-update-sshkeys
   $ ltsp-update-image --arch i386
+
   ```
 
 ## Ağ Yapılandırması
@@ -125,20 +127,20 @@ title: LTSP-DHCP Konfigurasyonu
 - `/etc/network/interfaces` dosyasını düzenle
 
   
-  `auto lo
+    auto lo
 
-  iface lo inet loopback
+    iface lo inet loopback
 
-  auto eth1
+    auto eth1
 
-  iface eth1 inet static
-         address 10.0.0.2
-         netmask 255.255.255.254
-         broadcast 10.0.2.255
+    iface eth1 inet static
+           address 10.0.0.2
+           netmask 255.255.255.254
+           broadcast 10.0.2.255
 
-  auto eth2
+    auto eth2
 
-  iface eth2 inet dhcp`
+    iface eth2 inet dhcp
   
 
   Tüm bunlardan sonra, sunucunun internet bağlantısının olduğunu ancak,
