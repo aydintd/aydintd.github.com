@@ -3,7 +3,6 @@ layout: post
 title: LTSP-DHCP Konfigurasyonu
 ---
 
-
 ##  LTSP Kurulumu
 
 - LTSP sunucuyu kur
@@ -83,42 +82,36 @@ title: LTSP-DHCP Konfigurasyonu
 
 - Sunucuları yeniden başlat
 
-  ```
-  $ service networking restart
+  `$ service networking restart`
 
-  $ service dhcp3-server restart
-  ```
+  `$ service dhcp3-server restart`
 
 ## İstemci Kurulumu
 
 - İstemci paketini kur
 
-  ```
-  $ ltsp-build-client --fat-client --fat-client-desktop ubuntu.desktop --arch i386 --skipimage
-  ```
+  `$ ltsp-build-client --fat-client --fat-client-desktop ubuntu.desktop --arch i386 --skipimage`
 
   Bu komut istemcileri sunucu içerisinde `/opt/ltsp/i386` dizini altında
   oluşturur.  İstemciye hangi dağıtımı kurmak istiyorsanız, kodda o işletim
   sistemini yazmalısınız; ör. Ubuntu için `ubuntu.desktop`
 
-
 ## İstemci Güncelle
 
 - İstemciye gir
-  
+
   `$ chroot /opt/ltsp/i386`
 
 - İstemci imajını güncelle
 
   `$ ltsp-update-sshkeys`
-  
+
   `$ ltsp-update-image --arch i386`
 
 ## Ağ Yapılandırması
 
 - `/etc/network/interfaces` dosyasını düzenle
 
-                          
         auto lo
 
         iface lo inet loopback
@@ -133,7 +126,6 @@ title: LTSP-DHCP Konfigurasyonu
         auto eth2
 
         iface eth2 inet dhcp
-  
 
   Tüm bunlardan sonra, sunucunun internet bağlantısının olduğunu ancak,
   istemcinin internet bağlantısının olmadığını göreceksiniz.
@@ -150,11 +142,9 @@ title: LTSP-DHCP Konfigurasyonu
 
 - ` /etc/init.d/rc.local` dosyasını düzenle
 
-  
   `$ iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE`
+
   `$ echo "1" > /proc/sys/net/ipv4/ip_forward`
-
-
 
 ## Paket Kurulumu
 
