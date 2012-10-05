@@ -3,11 +3,12 @@ layout: post
 title: LTSP-DHCP Konfigurasyonu
 ---
 
+
 ##  LTSP Kurulumu
 
 - LTSP sunucuyu kur
 
-  ```sh
+  ```
   $ sudo apt-get install ltsp-server-standalone
   ```
 
@@ -17,38 +18,38 @@ title: LTSP-DHCP Konfigurasyonu
 
 - `/etc/ltsp/ltsp-build-client.conf` dosyasını düzenle
 
-    ```sh
-    # The chroot architecture.
-    ARCH=i386
+  ```
+  # The chroot architecture.
+  ARCH=i386
 
-    # ubuntu-desktop and edubuntu-desktop are tested.
-    # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
-    # kubuntu lucid (10.10) working okay.
-    FAT_CLIENT_DESKTOPS="ubuntu-desktop"
+  # ubuntu-desktop and edubuntu-desktop are tested.
+  # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
+  # kubuntu lucid (10.10) working okay.
+  FAT_CLIENT_DESKTOPS="ubuntu-desktop"
 
-    # Space separated list of programs to install.
-    # The java plugin installation contained in ubuntu-restricted-extras
-    # needs some special care, so let's use it as an example.
-    LATE_PACKAGES="
-        ubuntu-restricted-extras
-        GiMP
-        nfs-client"
+  # Space separated list of programs to install.
+  # The java plugin installation contained in ubuntu-restricted-extras
+  # needs some special care, so let's use it as an example.
+  LATE_PACKAGES="
+      ubuntu-restricted-extras
+      gimp
+      nfs-client"
 
-    # This is needed to answer "yes" to the Java EULA.
-    # We'll create that file in the next step.
-    DEBCONF_SEEDS="/etc/ltsp/debconf.seeds"
+  # This is needed to answer "yes" to the Java EULA.
+  # We'll create that file in the next step.
+  DEBCONF_SEEDS="/etc/ltsp/debconf.seeds"
 
-    # This uses the server apt cache to speed up downloading.
-    # This locks the servers dpkg, so you can't use apt on
-    # the server while building the chroot.
-    MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"
-    ```
+  # This uses the server apt cache to speed up downloading.
+  # This locks the servers dpkg, so you can't use apt on
+  # the server while building the chroot.
+  MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"
+  ```
 
 ## DHCP Yapılandırılması
 
 - `/etc/ltsp/dhcpd.conf` dosyasını düzenle
 
-  ```sh
+  ```
   authoritative;
   allow bootp;
 
@@ -81,13 +82,13 @@ title: LTSP-DHCP Konfigurasyonu
 - `/etc/default/isc-dhcp-server` dosyasında arayüzü (`INTERFACES`) düzenle
   `INTERFACES`'i etkinleştir
 
-  ```sh
+  ```
   INTERFACES = "eth1"
   ```
 
 - Sunucuları yeniden başlat
 
-  ```sh
+  ```
   $ service networking restart
   $ service dhcp3-server restart
   ```
@@ -96,7 +97,7 @@ title: LTSP-DHCP Konfigurasyonu
 
 - İstemci paketini kur
 
-  ```sh
+  ```
   $ ltsp-build-client --fat-client --fat-client-desktop ubuntu.desktop --arch i386 --skipimage
   ```
 
@@ -109,13 +110,13 @@ title: LTSP-DHCP Konfigurasyonu
 
 - İstemciye gir
   
-  ```sh
+  ```
   $ chroot /opt/ltsp/i386
   ```
 
 - İstemci imajını güncelle
 
-  ```sh
+  ```
   $ ltsp-update-sshkeys
   $ ltsp-update-image --arch i386
   ```
@@ -124,7 +125,7 @@ title: LTSP-DHCP Konfigurasyonu
 
 - `/etc/network/interfaces` dosyasını düzenle
 
-  ```sh
+  ```
   auto lo
 
   iface lo inet loopback
@@ -156,7 +157,7 @@ title: LTSP-DHCP Konfigurasyonu
 
 - ` /etc/init.d/rc.local` dosyasını düzenle
 
-  ```sh
+  ```
   $ iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE
   $ echo "1" > /proc/sys/net/ipv4/ip_forward
   ```
