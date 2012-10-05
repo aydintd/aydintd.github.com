@@ -44,8 +44,6 @@ title: LTSP-DHCP Konfigurasyonu
 ## DHCP Yapılandırılması
 
 - `/etc/ltsp/dhcpd.conf` dosyasını düzenle
-<<<<<<< HEAD
-
           
         authoritative;
         allow bootp;
@@ -65,28 +63,6 @@ title: LTSP-DHCP Konfigurasyonu
             if substring( option vendor-class-identifier, 0, 9 ) = "PXEClient" {
                 filename "/ltsp/i386/pxelinux.0";
 
-=======
-
-          
-        authoritative;
-        allow bootp;
-
-        subnet 10.0.2.0 netmask 255.255.255.0 {
-            range 10.0.2.20 10.0.2.250;
-
-            option domain-name "example.com";
-            option domain-name-servers 192.168.111.5;
-            option broadcast-address 10.0.2.255;
-            option routers 10.0.2.2;
-        #    next-server 192.168.0.1;
-
-        #    get-lease-hostnames true;
-            option subnet-mask 255.255.255.0;
-            option root-path "/opt/ltsp/i386";
-            if substring( option vendor-class-identifier, 0, 9 ) = "PXEClient" {
-                filename "/ltsp/i386/pxelinux.0";
-
->>>>>>> b6c885af2aff9395fae3f4b958f8f3ad55875656
             } else {
                 filename "/ltsp/i386/nbi.img";
             }
