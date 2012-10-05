@@ -18,39 +18,38 @@ title: LTSP-DHCP Konfigurasyonu
 
 - `/etc/ltsp/ltsp-build-client.conf` dosyasını düzenle
 
-  ```
-  # The chroot architecture.
-  ARCH=i386
+  
+  `# The chroot architecture.
+   ARCH=i386
 
-  # ubuntu-desktop and edubuntu-desktop are tested.
-  # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
-  # kubuntu lucid (10.10) working okay.
-  FAT_CLIENT_DESKTOPS="ubuntu-desktop"
+   # ubuntu-desktop and edubuntu-desktop are tested.
+   # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
+   # kubuntu lucid (10.10) working okay.
+   FAT_CLIENT_DESKTOPS="ubuntu-desktop"
 
-  # Space separated list of programs to install.
-  # The java plugin installation contained in ubuntu-restricted-extras
-  # needs some special care, so let's use it as an example.
-  LATE_PACKAGES="
-      ubuntu-restricted-extras
-      gimp
-      nfs-client"
+   # Space separated list of programs to install.
+   # The java plugin installation contained in ubuntu-restricted-extras
+   # needs some special care, so let's use it as an example.
+   LATE_PACKAGES="
+       ubuntu-restricted-extras
+       gimp
+       nfs-client"
 
-  # This is needed to answer "yes" to the Java EULA.
-  # We'll create that file in the next step.
-  DEBCONF_SEEDS="/etc/ltsp/debconf.seeds"
+   # This is needed to answer "yes" to the Java EULA.
+   # We'll create that file in the next step.
+   DEBCONF_SEEDS="/etc/ltsp/debconf.seeds"
 
-  # This uses the server apt cache to speed up downloading.
-  # This locks the servers dpkg, so you can't use apt on
-  # the server while building the chroot.
-  MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"
-  ```
+   # This uses the server apt cache to speed up downloading.
+   # This locks the servers dpkg, so you can't use apt on
+   # the server while building the chroot.
+   MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"`
 
 ## DHCP Yapılandırılması
 
 - `/etc/ltsp/dhcpd.conf` dosyasını düzenle
 
-  ```
-  authoritative;
+  
+  `authoritative;
   allow bootp;
 
   subnet 10.0.2.0 netmask 255.255.255.0 {
@@ -71,8 +70,8 @@ title: LTSP-DHCP Konfigurasyonu
       } else {
           filename "/ltsp/i386/nbi.img";
       }
-  }
-  ```
+  }`
+  
 
   `option domain-name-servers` karşısına yazılan adres, internetinizin o anki
   size verdiği DNS adresi olmalı. Aksi takdirde daha sonradan kurulacak olan
@@ -125,8 +124,8 @@ title: LTSP-DHCP Konfigurasyonu
 
 - `/etc/network/interfaces` dosyasını düzenle
 
-  ```
-  auto lo
+  
+  `auto lo
 
   iface lo inet loopback
 
@@ -139,8 +138,8 @@ title: LTSP-DHCP Konfigurasyonu
 
   auto eth2
 
-  iface eth2 inet dhcp
-  ```
+  iface eth2 inet dhcp`
+  
 
   Tüm bunlardan sonra, sunucunun internet bağlantısının olduğunu ancak,
   istemcinin internet bağlantısının olmadığını göreceksiniz.
