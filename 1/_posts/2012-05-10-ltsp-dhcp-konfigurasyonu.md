@@ -5,9 +5,9 @@ title: LTSP-DHCP Konfigurasyonu
 
 ##  LTSP ve DHCP Server Kurulumu 
 
-```bash
-$ sudo apt-get install ltsp-server-standalone
-```
+
+`$ sudo apt-get install ltsp-server-standalone`
+
  
 komutu LTSP ve DHCP sunucularının kurulumunu sağlar.
 Sunucuya daha önce DHCP server kurulmamışsa bu komut sayesinde
@@ -15,15 +15,14 @@ her iki server da aynı anda kurulacaktır.
 
 ### LTSP Server Yapılandırılması
 
-```bash
-$ sudo vim /etc/ltsp/ltsp-build-client.conf
-```
+
+`$ sudo vim /etc/ltsp/ltsp-build-client.conf`
 
 komutu LTSP sunucunun konfigürasyon ayarlarını saklar.
 ltsp-build-client.conf dosyası içerisine aşağıdaki metin
 bloğunu girin :
 
-```conf
+
     # The chroot architecture.
     ARCH=i386
 
@@ -48,7 +47,7 @@ bloğunu girin :
     # This locks the servers dpkg, so you can't use apt on
     # the server while building the chroot.
     MOUNT_PACKAGE_DIR="/var/cache/apt/archives/"
-```
+
 
 ### DHCP Server Yapılandırılması;
 
