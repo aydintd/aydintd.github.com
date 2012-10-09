@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup ekleme
+title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup Ekleme
 ---
 
 ## Paket Kurulumu
@@ -27,7 +27,7 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup ekleme
 
 - `$ sudo ./lab-kullanıcıları-ekle Dosya_ADI` komutunu çalıştır
 
-  Öntanımlı kabuğu değiştir  
+   Öntanımlı kabuğu değiştir  
 
         #!/bin/bash
         useradd -Ds /bin/bash
@@ -38,11 +38,10 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup ekleme
                 chown -R $isim:$isim /home/$isim
         done
 
-  Betiğe argüman olarak verilecek dosya formatı şu şekilde olmalıdır:  
-  Dosya:  
-  cankurnaz  
-  emineker  
+   Betiğe argüman olarak verilecek dosya formatı şu şekilde olmalıdır:  
+   Dosya:  
+   cankurnaz  
+   emineker  
 
-  UYARI: Bu dosyada türkçe karakter ve noktalama işaretleri olmamalıdır; bu  
-  işlemin öncesinde dosyayı belirtilen formata uygun hale getirin.
-
+   UYARI: Bu dosyada türkçe karakter ve noktalama işaretleri olmamalıdır; bu  
+   işlemin öncesinde dosyayı belirtilen formata uygun hale getirin.
