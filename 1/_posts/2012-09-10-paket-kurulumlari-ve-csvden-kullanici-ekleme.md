@@ -21,7 +21,7 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup Ekleme
         gem install $paketler
 
    UYARI: Bu listeler her bir gem ve paket adını alt alta olacak şekilde eklemelidir.  
-   Örnek dosya: src/gemler.txt ve src/paketler.txt  
+   Örnek dosya: src/gemler.txt ve src/paketler.txt
 
 ## Kullanıcı/Grupların Eklenmesi
 
