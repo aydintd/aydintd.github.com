@@ -27,7 +27,7 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup Ekleme
 
 - `$ sudo ./lab-kullanıcıları-ekle Dosya_ADI` komutunu çalıştır
 
-   Öntanımlı kabuğu değiştir
+  Öntanımlı kabuğu değiştir
 
         #!/bin/bash
         useradd -Ds /bin/bash
