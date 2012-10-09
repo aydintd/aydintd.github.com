@@ -10,7 +10,6 @@ title: .csvden Kullanıcı/Grup Ekleme
 
   Öntanımlı kabuğu değiştir
   
-        ```sh
         #!/bin/bash
         useradd -Ds /bin/bash
   
@@ -19,14 +18,11 @@ title: .csvden Kullanıcı/Grup Ekleme
           mkdir /home/$isim
           chown -R $isim:$isim /home/$isim
         done
-        ```
 
   Betiğe argüman olarak verilecek dosya formatı şu şekilde olmalıdır:  
 
-        ```vim
         cankurnaz  
-        emineker
-        ```  
+        aydindoyak  
   
   UYARI: Bu dosyada türkçe karakter ve noktalama işaretleri olmamalıdır; bu  
   işlemin öncesinde dosyayı belirtilen formata uygun hale getirin.
