@@ -146,12 +146,3 @@ title: LTSP-DHCP Konfigurasyonu
 
   `$ echo "1" > /proc/sys/net/ipv4/ip_forward`
 
-## Paket Kurulumu
-
-TODO
-
-## Kullanıcı/Grupların Eklenmesi
-
-TODO
-
-
