@@ -5,7 +5,7 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup ekleme
 
 ## Paket Kurulumu
 
-   `sudo ./lab-paket-gem-yükle gem_listesi paket_listesi` komutunu çalıştır
+- `sudo ./lab-paket-gem-yükle gem_listesi paket_listesi` komutunu çalıştır
 
         #!/bin/bash
         for gem in `cat $1`; do
@@ -25,9 +25,9 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup ekleme
 
 ## Kullanıcı/Grupların Eklenmesi
 
-   `$ sudo ./lab-kullanıcıları-ekle Dosya_ADI` komutunu çalıştır
+- `$ sudo ./lab-kullanıcıları-ekle Dosya_ADI` komutunu çalıştır
 
-    Öntanımlı kabuğu değiştir  
+  Öntanımlı kabuğu değiştir  
 
         #!/bin/bash
         useradd -Ds /bin/bash
@@ -38,11 +38,11 @@ title: Paket Kurulumları ve .csv Uzantılı Dosyalardan Kullanıcı/Grup ekleme
                 chown -R $isim:$isim /home/$isim
         done
 
-    Betiğe argüman olarak verilecek dosya formatı şu şekilde olmalıdır:  
-    Dosya:  
-    cankurnaz  
-    emineker  
+  Betiğe argüman olarak verilecek dosya formatı şu şekilde olmalıdır:  
+  Dosya:  
+  cankurnaz  
+  emineker  
 
-    UYARI: Bu dosyada türkçe karakter ve noktalama işaretleri olmamalıdır; bu  
-    işlemin öncesinde dosyayı belirtilen formata uygun hale getirin.
+  UYARI: Bu dosyada türkçe karakter ve noktalama işaretleri olmamalıdır; bu  
+  işlemin öncesinde dosyayı belirtilen formata uygun hale getirin.
 
