@@ -1,0 +1,164 @@
+<h2 id='ltsp_kurulumu'>LTSP Kurulumu</h2>
+
+<ul>
+<li>
+<p>LTSP sunucuyu kur</p>
+
+<p><code>$ sudo apt-get install ltsp-server-standalone</code></p>
+
+<p>Bu komut LTSP ve (eğer kurulu değilse) DHCP sunucuyu birlikte kurar.</p>
+</li>
+</ul>
+
+<h2 id='ltsp_yaplandrmas'>LTSP Yapılandırması</h2>
+
+<ul>
+<li>
+<p><code>/etc/ltsp/ltsp-build-client.conf</code> dosyasını düzenle</p>
+
+<pre><code>  `# The chroot architecture.
+   ARCH=i386
+
+   # ubuntu-desktop and edubuntu-desktop are tested.
+   # If you test with [k|x]ubuntu-desktop, edit this page and mention if it worked OK.
+   # kubuntu lucid (10.10) working okay.
+   FAT_CLIENT_DESKTOPS=&quot;ubuntu-desktop&quot;
+
+   # Space separated list of programs to install.
+   # The java plugin installation contained in ubuntu-restricted-extras
+   # needs some special care, so let&#39;s use it as an example.
+   LATE_PACKAGES=&quot;
+       ubuntu-restricted-extras
+       gimp
+       nfs-client&quot;
+
+   # This is needed to answer &quot;yes&quot; to the Java EULA.
+   # We&#39;ll create that file in the next step.
+   DEBCONF_SEEDS=&quot;/etc/ltsp/debconf.seeds&quot;
+
+   # This uses the server apt cache to speed up downloading.
+   # This locks the servers dpkg, so you can&#39;t use apt on
+   # the server while building the chroot.
+   MOUNT_PACKAGE_DIR=&quot;/var/cache/apt/archives/&quot;`</code></pre>
+</li>
+</ul>
+
+<h2 id='dhcp_yaplandrlmas'>DHCP Yapılandırılması</h2>
+
+<ul>
+<li>
+<p><code>/etc/ltsp/dhcpd.conf</code> dosyasını düzenle</p>
+
+<pre><code>  authoritative;
+  allow bootp;
+
+  subnet 10.0.2.0 netmask 255.255.255.0 {
+      range 10.0.2.20 10.0.2.250;
+
+      option domain-name &quot;example.com&quot;;
+      option domain-name-servers 192.168.111.5;
+      option broadcast-address 10.0.2.255;
+      option routers 10.0.2.2;
+  #    next-server 192.168.0.1;
+
+  #    get-lease-hostnames true;
+      option subnet-mask 255.255.255.0;
+      option root-path &quot;/opt/ltsp/i386&quot;;
+      if substring( option vendor-class-identifier, 0, 9 ) = &quot;PXEClient&quot; {
+          filename &quot;/ltsp/i386/pxelinux.0&quot;;
+
+      } else {
+          filename &quot;/ltsp/i386/nbi.img&quot;;
+      }
+  }</code></pre>
+
+<p><code>option domain-name-servers</code> karşısına yazılan adres, internetinizin o anki size verdiği DNS adresi olmalı. Aksi takdirde daha sonradan kurulacak olan istemcinin internete bağlı gözüktüğünü ancak herhangi bir web sitesini açamadığını göreceksiniz.</p>
+</li>
+
+<li>
+<p><code>/etc/default/isc-dhcp-server</code> dosyasında arayüzü (<code>INTERFACES</code>) düzenle <code>INTERFACES</code>&#8216;i etkinleştir</p>
+
+<p><code>
+INTERFACES = &quot;eth1&quot;
+</code></p>
+</li>
+
+<li>
+<p>Sunucuları yeniden başlat</p>
+
+<p><code>$ service networking restart</code></p>
+
+<p><code>$ service dhcp3-server restart</code></p>
+</li>
+</ul>
+
+<h2 id='stemci_kurulumu'>İstemci Kurulumu</h2>
+
+<ul>
+<li>
+<p>İstemci paketini kur</p>
+
+<p><code>$ ltsp-build-client --fat-client --fat-client-desktop ubuntu.desktop --arch i386 --skipimage</code></p>
+
+<p>Bu komut istemcileri sunucu içerisinde <code>/opt/ltsp/i386</code> dizini altında oluşturur. İstemciye hangi dağıtımı kurmak istiyorsanız, kodda o işletim sistemini yazmalısınız; ör. Ubuntu için <code>ubuntu.desktop</code></p>
+</li>
+</ul>
+
+<h2 id='stemci_gncelle'>İstemci Güncelle</h2>
+
+<ul>
+<li>
+<p>İstemciye gir</p>
+
+<p><code>$ chroot /opt/ltsp/i386</code></p>
+</li>
+
+<li>
+<p>İstemci imajını güncelle</p>
+
+<p><code>$ ltsp-update-sshkeys</code></p>
+
+<p><code>$ ltsp-update-image --arch i386</code></p>
+</li>
+</ul>
+
+<h2 id='a_yaplandrmas'>Ağ Yapılandırması</h2>
+
+<ul>
+<li>
+<p><code>/etc/network/interfaces</code> dosyasını düzenle</p>
+
+<pre><code>  auto lo
+
+  iface lo inet loopback
+
+  auto eth1
+
+  iface eth1 inet static
+         address 10.0.0.2
+         netmask 255.255.255.254
+         broadcast 10.0.2.255
+
+  auto eth2
+
+  iface eth2 inet dhcp</code></pre>
+
+<p>Tüm bunlardan sonra, sunucunun internet bağlantısının olduğunu ancak, istemcinin internet bağlantısının olmadığını göreceksiniz.</p>
+
+<p>Bunun nedeni istemcinin sunucudan internete bağlanma isteği göndermesine karşın sunucunun buna izin vermemesidir. Yani sunucu, kendi üzerinden istemcilere internete çıkma hakkı tanımıyor.</p>
+
+<p>İç ağdaki makinaların internet üzerindeki makinalarla haberleşmesini sağlayabilmek için NAT Maskelemesi (Network Access Translation Masquerade) yapılmalıdır.</p>
+</li>
+</ul>
+
+<h2 id='nat'>NAT</h2>
+
+<ul>
+<li>
+<p><code> /etc/init.d/rc.local</code> dosyasını düzenle</p>
+
+<p><code>$ iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE</code></p>
+
+<p><code>$ echo &quot;1&quot; &gt; /proc/sys/net/ipv4/ip_forward</code></p>
+</li>
+</ul>

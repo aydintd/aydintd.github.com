@@ -1,0 +1,22 @@
+<h2 id='paket_kurulumu'>Paket Kurulumu</h2>
+
+<ul>
+<li>
+<p><code>sudo ./lab-paket-gem-yükle gem_listesi paket_listesi</code> komutunu çalıştır</p>
+
+<pre><code>  #!/bin/bash
+  for gem in `cat $1`; do
+  gemler=&quot;$gemler $gem&quot;
+  done
+
+  gem install $gemler
+
+  for paket in `cat $2`; do
+  paketler=&quot;$paketlerler $paket&quot;
+  done
+
+  gem install $paketler</code></pre>
+
+<p>UYARI: Bu listeler her bir gem ve paket adını alt alta olacak şekilde eklemelidir.<br /> Örnek dosya: src/gemler.txt ve src/paketler.txt</p>
+</li>
+</ul>
