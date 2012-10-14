@@ -18,7 +18,7 @@ yazın.
 görüyor olmanız lazım :
 
         127.0.0.1      localhost  
-        127.0.1.1 peekaboo
+        127.0.1.1      peekaboo
         
         # The following lines are desirable for IPv6 capable hosts
         ::1 ip6-localhost ip6-loopback
@@ -27,7 +27,7 @@ görüyor olmanız lazım :
         ff02::1 ip6-allnodes
         ff02::2 ip6-allrouters
         
-  `127.0.1.1     peekaboo` satırında peekaboo yazan kısmı bir  
+  `127.0.1.1      peekaboo` satırında peekaboo yazan kısmı bir  
   önceki adımda olmasını istediğiniz makine ismiyle değiştirin.  
   
 - Son olarak `$ sudo reboot` diyerek sisteminizi yeniden  
