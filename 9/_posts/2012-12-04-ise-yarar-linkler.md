@@ -1,5 +1,5 @@
 ---
-title: ise-yarar-linkler
+title: İşe-Yarar-Linkler
 tag:  
 layout: post
 category: 
