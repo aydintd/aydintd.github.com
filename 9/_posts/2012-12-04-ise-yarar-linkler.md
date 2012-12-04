@@ -1,5 +1,5 @@
 ---
-title: İşe-Yarar-Linkler
+title: İşe Yarar Linkler
 tag:  
 layout: post
 category: 
@@ -15,4 +15,5 @@ category:
 
     `http://vagrantup.com/v1/docs/base_boxes.html`
 
-##  TODO
+
+TODO
