@@ -1,5 +1,5 @@
 ---
-title: iyi oldu güzel oldu
+title: İyi oldu güzel oldu
 tag:  
 layout: post
 category: 
