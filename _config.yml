@@ -3,7 +3,7 @@ markdown: rdiscount
 rdiscount:
   extensions: [smart]
 pygments: true
-
+url: http://aydintd.github.com
 exclude:
         - Rakefile
         - Makefile
