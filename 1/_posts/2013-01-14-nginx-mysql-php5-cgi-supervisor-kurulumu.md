@@ -59,15 +59,16 @@ category:
   php5-imagick php5-imap php5-common php5-mcrypt php5-memcache   \
   php5-mhash php5-ming php5-ps php5-pspell php5-recode php5-snmp \ 
   php5-sqlite php5-tidy php5-xmlrpc php5-xsl
-  ```
-  Bu modülleri kurduktan sonra sitelerimizi oluşturabilmek adına  
-  /var/www dizinine gerekli izni veriyoruz (eğer /www dizini yoksa kendiniz  
-  oluşturun[1]) :  
+  ```  
+ 
+  Bu modülleri kurduktan sonra sitelerimizi oluşturabilmek adına    
+  /var/www dizinine gerekli izni veriyoruz.  
+  (eğer /www dizini yoksa kendiniz oluşturun[1]) :    
   
-  `$ sudo mkdir /var/www` [1]
-  `$ sudo chmod 777 -R /var/www`
+  `$ sudo mkdir /var/www` [1]  
+  `$ sudo chmod 777 -R /var/www`  
 
-  Denemek için konsolunuzda :
+  Denemek için konsolunuzda :  
 
         cat >/var/www/test.php
 	<?php
@@ -75,9 +76,107 @@ category:
 	?>
 	ctrl + d
 
-  Dedikten sonra web tarayıcınıza `http://localhost/test.php`
-  yazdığınızda sizi php nin test sayfasının karşılamasını umuyoruz.  
-  Eğer bir terslik varsa şu ana kadar ki kurulumlarınızı gözden geçirin.  
+  Dedikten sonra web tarayıcınıza `http://localhost/test.php`  
+  yazdığınızda sizi php nin test sayfasının karşılamasını umuyoruz.    
+  Eğer bir terslik varsa şu ana kadar ki kurulumlarınızı gözden geçirin.    
 
 
-##TODO
+#### nginx Kurulumu  
+
+  nginx aşağıdaki komutla kuralım :  
+
+  `$ sudo apt-get install nginx`  
+
+  Kurulum bittikten sonra nginx i tekrar başlatalım :  
+
+  `$ sudo service nginx restart`
+        
+	Starting nginx: the configuration file /etc/nginx/nginx.conf 
+	syntax is ok
+        configuration file /etc/nginx/nginx.conf 
+	test is successful
+	nginx.  
+
+  nginx prosesi çalışıyor mu kontrol edelim : 
+
+  `$ netstat -pantu | grep:80`
+
+        (Not all processes could be identified, non-owned process info
+	will not be shown, you would have to be root to see it all.)
+	tcp        0      0 0.0.0.0:80              0.0.0.0:*   DİNLE  -  
+
+  Şimdi sıra nginx i konfigüre etmeye geldi.  
+
+  Aşağıdaki ayar dosyasını makinemize indirelim :  
+
+  `$ wget http://gdemir.me/file/nginx-ayar`  
+
+  Ve bu ayar dosyasını nginx in default ayar dosyasına yükleyelim.  
+
+  `$ sudo install -m 644 nginx-ayar /etc/nginx/sites-available/default`  
+
+  Dizin izinlerini ayarlayalım : 
+
+  `$ sudo chown -R www-data:www-data /var/www/`
+
+  Web tarayıcımızdan http://localhost a girdiğimizde  
+  `Welcome nginx` gibi bir başlıkla karşılaşmamız gerek.  
+
+  Makineyi tekrar başlatın.
+
+  `$ sudo reboot`
+
+  nginx i tekrar başlatın.
+
+  `$ sudo service nginx start`
+
+#### Supervisor Kurulumu
+
+  Paketi kuruyoruz : 
+
+  `$ sudo apt-get install supervisor`
+
+  Buradaki supervisor ayar dosyasını indirelim :  
+
+  `$ wget http://gdemir.me/file/supervisor-ayar`
+
+  Ve php.conf dosyasına ayar bilgilerini yükleyelim :  
+
+  `$ install -m 644 supervisor-ayar /etc/supervisor/conf.d/php.conf`
+
+  Supervisor un web sunucumuzda sürekli çalışması gerek.  
+  Sürekli çalışır hale getirelim :  
+
+  `$ sudo update-rc.d supervisor defaults`
+
+        System start/stop links for /etc/init.d/supervisor already exist.  
+
+  Supervisor prosesinin çalışıp çalışmadığına bakalım : 
+
+  `$ sudo ps ax | grep supervisor`
+      
+        5469 ?        Ss     0:00 /usr/bin/python /usr/bin/supervisord
+        5495 pts/0    S+     0:00 grep --color=auto supervisor  
+
+  Buraya kadar bütün kurulumlarımız tamam. Tek yapmamız gereken gereksiz    
+  nginx default ayarını sunucumuzdan kaldırmak :  
+
+  `$ sudo rm -rf nginx-default/`
+
+  Ve makinemizi yeniden başlatıyoruz.
+
+  `$ sudo reboot`
+
+  Bütün kurulum bu kadar. Bu işlemleri doğru ve düzgün sırayla  
+  yapmışsanız; makinenizin içine wordpress, moodle vb. uygulamaları
+  koyabilir, localinizde çalışma imkanına erişebilirsiniz.  
+
+#### Lütfen Dikkat!
+
+  Eğer bir web sunucu üzerinde çalışmıyorsanız sanal bir makine üzerinde  
+  bu kurulumları gerçekleştirmeniz şiddetle tavsiye edilir.    
+
+#### Dokümantasyonda kullanılan kaynaklar :  
+
+  `http://gdemir.me`  
+  `http://nginx.com/docs.html`  
