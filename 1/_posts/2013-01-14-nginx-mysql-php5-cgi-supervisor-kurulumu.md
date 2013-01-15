@@ -9,10 +9,10 @@ category:
 
 ### Kurulum İçerikleri  
 
-  * mysql Kurulumu  
-  * nginx kurulumu ve konfigurasyonu  
-  * php5-cgi kurulumu  
-  * supervisor kurulumu  
+  *  mysql Kurulumu  
+  *  nginx Kurulumu ve Konfigürasyonu  
+  *  php5-cgi Kurulumu  
+  *  supervisor Kurulumu  
 
 #### Mysql Kurulumu  
 
