@@ -4,8 +4,8 @@ tag:
 layout: post
 category: 
 ---
-  Fatfreeframeworks (F3), Yii veya Php denemelerimiz için  
-  kullanacağımız ortamı sırasıyla kuralım :  
+  php denemeleri yapabileceğimiz nginx web sunucusu için   
+  gereken ortamı sırasıyla kuralım :    
 
 ### Kurulum İçerikleri  
 
@@ -109,7 +109,7 @@ category:
 
   Aşağıdaki ayar dosyasını makinemize indirelim :  
 
-  `$ wget http://gdemir.me/file/nginx-ayar`  
+  `$ wget http://aydintd.me/file/nginx-ayar`  
 
   Ve bu ayar dosyasını nginx in default ayar dosyasına yükleyelim.  
 
@@ -138,7 +138,7 @@ category:
 
   Buradaki supervisor ayar dosyasını indirelim :  
 
-  `$ wget http://gdemir.me/file/supervisor-ayar`
+  `$ wget http://aydintd.me/file/supervisor-ayar`
 
   Ve php.conf dosyasına ayar bilgilerini yükleyelim :  
 
