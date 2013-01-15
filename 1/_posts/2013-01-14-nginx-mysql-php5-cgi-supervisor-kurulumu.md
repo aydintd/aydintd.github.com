@@ -55,11 +55,11 @@ category:
   Bu yüzden gerekli modülleri aktivesi için aşağıdaki komutu çalıştırıyoruz :  
 
   ```
-  $ sudo apt-get install php5-mysql php5-curl php5-gd php5-idn php-pear \ 
-  php5-imagick php5-imap php5-common php5-mcrypt php5-memcache   \
-  php5-mhash php5-ming php5-ps php5-pspell php5-recode php5-snmp \ 
-  php5-sqlite php5-tidy php5-xmlrpc php5-xsl
-  ```  
+  $ sudo apt-get install php5-mysql php5-curl php5-gd php5-idn php-pear     
+  php5-imagick php5-imap php5-common php5-mcrypt php5-memcache    
+  php5-mhash php5-ming php5-ps php5-pspell php5-recode php5-snmp     
+  php5-sqlite php5-tidy php5-xmlrpc php5-xsl    
+  ```      
  
   Bu modülleri kurduktan sonra sitelerimizi oluşturabilmek adına    
   /var/www dizinine gerekli izni veriyoruz.  
@@ -99,7 +99,7 @@ category:
 
   nginx prosesi çalışıyor mu kontrol edelim : 
 
-  `$ netstat -pantu | grep:80`
+  `$ sudo netstat -pantu | grep :80`
 
         (Not all processes could be identified, non-owned process info
 	will not be shown, you would have to be root to see it all.)
@@ -120,7 +120,7 @@ category:
   `$ sudo chown -R www-data:www-data /var/www/`
 
   Web tarayıcımızdan http://localhost a girdiğimizde  
-  `Welcome nginx` gibi bir başlıkla karşılaşmamız gerek.  
+  `Welcome to nginx` gibi bir başlıkla karşılaşmamız gerek.  
 
   Makineyi tekrar başlatın.
 
