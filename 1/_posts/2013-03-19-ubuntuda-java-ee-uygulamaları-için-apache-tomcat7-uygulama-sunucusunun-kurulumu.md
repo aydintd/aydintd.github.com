@@ -4,18 +4,19 @@ tag:
 layout: post
 category: 
 ---
+  
   Java2EE web uygulamaları için gereken açık kaynak apache-tomcat7 uygulama  
   sunucusunun kurulumunu adım adım takip edelim :
 
-  ### Başlarken  
+  ###  Başlarken  
 
   Kurulum Linux Ubuntu 12.10 32bit işletim sistemi üzerinde Apache Tomcat 7.0.30  
   sürümü olarak sizi yönlendirecektir.    
 
-  * Not : Tomcat Uygulama sunucusunu kurmadan, makinenizde Java nın kurulu  
+  *  Not : Tomcat Uygulama sunucusunu kurmadan, makinenizde Java nın kurulu  
   olduğundan emin olun.  
 
-  ### Kurulum  
+  ###  Kurulum  
 
   Aşağıdaki komutları çalıştırın :  
 
@@ -56,20 +57,20 @@ category:
   Aşağıdaki gibi JVM çıktılarını gözlemlemelisiniz.  
 
   ```
-  Using CATALINA_BASE:   /usr/share/tomcat7
-  Using CATALINA_HOME:   /usr/share/tomcat7
-  Using CATALINA_TMPDIR: /usr/share/tomcat7/temp
-  Using JRE_HOME:        /usr
-  Using CLASSPATH:
-  /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar
-  Server version: Apache Tomcat/7.0.30
-  Server built:   Jan 10 2013 04:10:25
-  Server number:  7.0.30.0
-  OS Name:        Linux
-  OS Version:     3.5.0-25-generic
-  Architecture:   i386
-  JVM Version:    1.7.0-b147
-  JVM Vendor:     Oracle Corporation
+  Using CATALINA_BASE:   /usr/share/tomcat7  
+  Using CATALINA_HOME:   /usr/share/tomcat7  
+  Using CATALINA_TMPDIR: /usr/share/tomcat7/temp  
+  Using JRE_HOME:        /usr  
+  Using CLASSPATH:  
+  /usr/share/tomcat7/bin/bootstrap.jar:/usr/share/tomcat7/bin/tomcat-juli.jar  
+  Server version: Apache Tomcat/7.0.30  
+  Server built:   Jan 10 2013 04:10:25  
+  Server number:  7.0.30.0  
+  OS Name:        Linux  
+  OS Version:     3.5.0-25-generic  
+  Architecture:   i386  
+  JVM Version:    1.7.0-b147  
+  JVM Vendor:     Oracle Corporation  
   ```
   ###  Son  
 
