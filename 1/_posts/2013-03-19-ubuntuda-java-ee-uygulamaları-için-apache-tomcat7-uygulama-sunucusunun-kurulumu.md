@@ -8,7 +8,7 @@ category:
   Java2EE web uygulamaları için gereken açık kaynak apache-tomcat7 uygulama  
   sunucusunun kurulumunu adım adım takip edelim :
 
-  ###  Başlarken  
+  ### Başlarken  
 
   Kurulum Linux Ubuntu 12.10 32bit işletim sistemi üzerinde Apache Tomcat 7.0.30  
   sürümü olarak sizi yönlendirecektir.    
@@ -16,7 +16,7 @@ category:
   *  Not : Tomcat Uygulama sunucusunu kurmadan, makinenizde Java nın kurulu  
   olduğundan emin olun.  
 
-  ###  Kurulum  
+  ### Kurulum  
 
   Aşağıdaki komutları çalıştırın :  
 
@@ -72,7 +72,8 @@ category:
   JVM Version:    1.7.0-b147  
   JVM Vendor:     Oracle Corporation  
   ```
-  ###  Son  
+  
+  ### Son  
 
   Web Browser a `http://localhost:8080` yazdığınızda `It Works!` gibi bir yazı    
   görüyorsanız, tomcat7 uygulama sunucu kurulumunu başarıyla  
