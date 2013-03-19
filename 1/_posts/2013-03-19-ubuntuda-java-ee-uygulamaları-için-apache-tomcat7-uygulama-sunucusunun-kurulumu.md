@@ -77,11 +77,10 @@ category:
   görüyorsanız, tomcat7 uygulama sunucu kurulumunu başarıyla gerçekleştirmişsinizdir.  
 
   * Önemli not : Kurulumdan hemen sonra Eclipse editörü üzerinde bir  
-  Java EE uygulamasını görüntülemek istiyorsanız, tomcat7 sunucunuzu konsoldan    
-  tekrar kapatmanız gerekebilir. Uygulamayı görüntülemeye çalıştığınızda  
-  tomcat7 in başka bir prosesle meşgul olduğu mesajıyla karşı karşıya 
-  kalırsanız, tomcat7 sunucusunu elle kapatın ve Eclipse editörü yardımıyla    
-  uygulamanızı tekrar sunucu üzerinde görüntülemeye çalışın.  
+  Java EE uygulamasını görüntülemek istiyorsanız, tomcat7 sunucunuzu konsoldan tekrar kapatmanız gerekebilir.  
+  Uygulamayı görüntülemeye çalıştığınızda tomcat7 in başka bir prosesle meşgul olduğu  
+  mesajıyla karşı karşıya kalırsanız, tomcat7 sunucusunu elle kapatın  
+  ve Eclipse editörü yardımıyla uygulamanızı tekrar sunucu üzerinde görüntülemeye çalışın.(çalıştırın)      
 
 ### Kaynakça   
 
