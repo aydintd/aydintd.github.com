@@ -74,17 +74,16 @@ category:
 ### Son  
 
   Web Browser a `http://localhost:8080` yazdığınızda `It Works!` gibi bir yazı    
-  görüyorsanız, tomcat7 uygulama sunucu kurulumunu başarıyla  
-  gerçekleştirmişsinizdir.  
+  görüyorsanız, tomcat7 uygulama sunucu kurulumunu başarıyla gerçekleştirmişsinizdir.  
 
-  * Önemli not : Kurulumdan hemen sonra Eclipse editörü üzerinde bir
-  Java EE uygulamasını görüntülemek istiyorsanız, tomcat7 sunucunuzu konsoldan  
+  * Önemli not : Kurulumdan hemen sonra Eclipse editörü üzerinde bir  
+  Java EE uygulamasını görüntülemek istiyorsanız, tomcat7 sunucunuzu konsoldan    
   tekrar kapatmanız gerekebilir. Uygulamayı görüntülemeye çalıştığınızda  
   tomcat7 in başka bir prosesle meşgul olduğu mesajıyla karşı karşıya 
-  kalırsanız, tomcat7 sunucusunu elle kapatın ve Eclipse editörü yardımıyla  
+  kalırsanız, tomcat7 sunucusunu elle kapatın ve Eclipse editörü yardımıyla    
   uygulamanızı tekrar sunucu üzerinde görüntülemeye çalışın.  
 
-### Kaynakça 
+### Kaynakça   
 
-  `http://hendrelouw73.wordpress.com`
+  `http://hendrelouw73.wordpress.com`  
   `blog.eviac.com`
