@@ -1,19 +1,19 @@
 ---
 title: Alan adı aldık
-tag:  
+tag:
 layout: post
-category: 
+category:
 ---
 
-  Alan adını da aldım, artık aydintd.me    
+  Alan adını da aldım, artık aydintd.me
   adresinden size ulaşacağım.
 
-  Tüm bunların hepsi sadece $9.99    
- 
-  Şaka!  
+  Tüm bunların hepsi sadece $9.99
+
+  Şaka!
 
   Veri Yapıları çalışmalıyım.
 
   Not : Yardımlarından dolayı ecylmz.com a teşekkürü
-  bir borç bilirim.(reklam)  
+  bir borç bilirim.(reklam)
 
